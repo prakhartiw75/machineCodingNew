@@ -1,4 +1,4 @@
-package ExpensesDistribution;
+package Service;
 
 import Entity.ExpenseTracker;
 import Entity.User;
@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-public class EqualDistribution extends ExpensesDistribution  {
+public class EqualDistributionService extends ExpensesDistributionService {
 
-    public EqualDistribution(String paidBy, int totalAmount, int userNumber, List<String> debtUser, Map<String, User> userMap, ExpenseTracker tracker) {
+    public EqualDistributionService(String paidBy, int totalAmount, int userNumber, List<String> debtUser, Map<String, User> userMap, ExpenseTracker tracker) {
         super(paidBy, totalAmount, userNumber, debtUser, userMap, tracker);
     }
 

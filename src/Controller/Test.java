@@ -1,9 +1,9 @@
-package Tester;
+package Controller;
 
 import Entity.ExpenseTracker;
-import ExpensesDistribution.ExpensesDistribution;
-import ExpensesDistribution.EqualDistribution;
-import ExpensesDistribution.ExactDistribution;
+import Service.ExpensesDistributionService;
+import Service.EqualDistributionService;
+import Service.ExactDistributionService;
 import Entity.User;
 
 import java.util.*;
@@ -88,12 +88,12 @@ public class Test {
                         for(int i=numUser+5;i<words.length;i++){
                             moneyDistribution.add(Double.parseDouble(words[i]));
                         }
-                        ExpensesDistribution expensesDistribution=new ExactDistribution(paidBy,Integer.parseInt(words[2]),numUser,borrower,userMap,tracker,moneyDistribution);
-                        expensesDistribution.distribute();
+                        ExpensesDistributionService expensesDistributionService =new ExactDistributionService(paidBy,Integer.parseInt(words[2]),numUser,borrower,userMap,tracker,moneyDistribution);
+                        expensesDistributionService.distribute();
                         System.out.println("OK");
                     } else{
-                        ExpensesDistribution expensesDistribution=new EqualDistribution(paidBy,Integer.parseInt(words[2]),numUser,borrower,userMap,tracker);
-                        expensesDistribution.distribute();
+                        ExpensesDistributionService expensesDistributionService =new EqualDistributionService(paidBy,Integer.parseInt(words[2]),numUser,borrower,userMap,tracker);
+                        expensesDistributionService.distribute();
                         System.out.println("OK");
                     }
                     break;

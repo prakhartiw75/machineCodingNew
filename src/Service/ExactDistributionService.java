@@ -1,4 +1,4 @@
-package ExpensesDistribution;
+package Service;
 
 import Entity.ExpenseTracker;
 import Entity.User;
@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-public class ExactDistribution extends ExpensesDistribution {
+public class ExactDistributionService extends ExpensesDistributionService {
 
     private List<Double>exactDistribute;
-    public ExactDistribution(String paidBy, int totalAmount, int userNumber, List<String> debtUser, Map<String, User> userMap,ExpenseTracker tracker,List<Double>exactDistribute) {
+    public ExactDistributionService(String paidBy, int totalAmount, int userNumber, List<String> debtUser, Map<String, User> userMap, ExpenseTracker tracker, List<Double>exactDistribute) {
         super(paidBy, totalAmount, userNumber, debtUser, userMap,tracker);
         this.exactDistribute=exactDistribute;
     }

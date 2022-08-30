@@ -1,4 +1,4 @@
-package ExpensesDistribution;
+package Service;
 
 import Entity.ExpenseTracker;
 import Entity.User;
@@ -6,14 +6,14 @@ import Entity.User;
 import java.util.List;
 import java.util.Map;
 
-public abstract class ExpensesDistribution {
+public abstract class ExpensesDistributionService {
     private String paidBy;
     private int totalAmount;
     private int userNumber;
     private List<String> debtUser;
     private Map<String,User> userMap;
     private ExpenseTracker tracker;
-    public ExpensesDistribution(String paidBy, int totalAmount, int userNumber, List<String> debtUser, Map<String, User> userMap,ExpenseTracker tracker) {
+    public ExpensesDistributionService(String paidBy, int totalAmount, int userNumber, List<String> debtUser, Map<String, User> userMap, ExpenseTracker tracker) {
         this.paidBy = paidBy;
         this.totalAmount = totalAmount;
         this.userNumber = userNumber;
