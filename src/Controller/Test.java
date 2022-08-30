@@ -47,10 +47,6 @@ public class Test {
                         System.out.println("No balances");
                         break;
                     } else if (words.length == 1) {
-                        if (!isInserted) {
-                            System.out.println("No balances");
-                            break;
-                        }
                         for (Map.Entry<User, Map<User, Double>> map : expenseTrackerMap.entrySet()) {
                             for (Map.Entry<User, Double> map2 : map.getValue().entrySet()) {
                                 if (map2.getValue() < 0) {
@@ -78,13 +74,10 @@ public class Test {
                     break;
                 case "EXPENSE":
                     isInserted = true;
+                    DistributionService distributionService = null;
                     int numUser = Integer.parseInt(words[3]);
                     String payer = words[1];
-                    List<String> borrowers = new ArrayList<>();
-                    for (int i = 4; i < 4 + numUser; i++) {
-                        borrowers.add(words[i]);
-                    }
-                    DistributionService distributionService = null;
+                    List<String> borrowers = new ArrayList<>(Arrays.asList(words).subList(4, 4 + numUser));
                     if (words[numUser + 4].equals("EXACT")) {
                         List<Double> moneyDistribution = new ArrayList<>();
                         for (int i = numUser + 5; i < words.length; i++) {
@@ -100,7 +93,7 @@ public class Test {
                 default:
                     System.out.println("Wrong Input! Please check your input");
             }
-            System.out.println("Do you want to test again? Enter y for YES and n for NO ");
+            System.out.println("Do you want to test again? Enter y for YES and anything else for NO ");
             test = scanner.nextLine().charAt(0) == 'y';
         }
     }

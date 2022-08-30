@@ -17,7 +17,6 @@ public class EqualDistributionService extends DistributionService {
     public void distribute() {
         double debtAmountForOthers = ((double) getAmountPaid()) / ((double) getUserNumber());
         debtAmountForOthers = Math.round(debtAmountForOthers * 100.0) / 100.0;
-        System.out.println(debtAmountForOthers);
         Map<String, User> userMap = getUserMap();
         Map<User, Map<User, Double>> expenseMap = getTracker().getOwnMap();
         User payer = userMap.get(getPayer());
