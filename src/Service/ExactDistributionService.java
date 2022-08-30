@@ -1,6 +1,6 @@
 package Service;
 
-import Entity.ExpenseTracker;
+import Helper.ExpenseTracker;
 import Entity.User;
 
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.Objects;
 
 public class ExactDistributionService extends DistributionService {
 
-    private List<Double> exactDistribute;
+    private final List<Double> exactDistribute;
 
     public ExactDistributionService(String paidBy, int totalAmount, int userNumber, List<String> borrowers, Map<String, User> userMap, ExpenseTracker tracker, List<Double> exactDistribute) {
         super(paidBy, totalAmount, userNumber, borrowers, userMap, tracker);
@@ -19,7 +19,7 @@ public class ExactDistributionService extends DistributionService {
     @Override
     public void distribute() {
         Map<String, User> userMap = getUserMap();
-        Map<User, Map<User, Double>> expenseMap = getTracker().getOwnMap();
+        Map<User, Map<User, Double>> expenseMap = getTracker().getTrackerMap();
         User payer = userMap.get(getPayer());
         List<String> borrowers = getBorrowers();
         for (String borrowerId : borrowers) {

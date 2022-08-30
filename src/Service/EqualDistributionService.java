@@ -1,6 +1,6 @@
 package Service;
 
-import Entity.ExpenseTracker;
+import Helper.ExpenseTracker;
 import Entity.User;
 
 import java.util.List;
@@ -18,13 +18,13 @@ public class EqualDistributionService extends DistributionService {
         double debtAmountForOthers = ((double) getAmountPaid()) / ((double) getUserNumber());
         debtAmountForOthers = Math.round(debtAmountForOthers * 100.0) / 100.0;
         Map<String, User> userMap = getUserMap();
-        Map<User, Map<User, Double>> expenseMap = getTracker().getOwnMap();
+        Map<User, Map<User, Double>> expenseMap = getTracker().getTrackerMap();
         User payer = userMap.get(getPayer());
         boolean first = true;
         double debtAmountForFirst = getAmountPaid() - (getUserNumber() - 1) * debtAmountForOthers;
         debtAmountForFirst = Math.round(debtAmountForFirst * 100.0) / 100.0;
         for (String id : getBorrowers()) {
-            double debtAmount = 0.0;
+            double debtAmount;
             if (first) debtAmount = debtAmountForFirst;
             else {
                 debtAmount = debtAmountForOthers;

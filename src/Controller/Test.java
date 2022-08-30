@@ -1,6 +1,6 @@
 package Controller;
 
-import Entity.ExpenseTracker;
+import Helper.ExpenseTracker;
 import Service.DistributionService;
 import Service.EqualDistributionService;
 import Service.ExactDistributionService;
@@ -14,7 +14,7 @@ public class Test {
         ExpenseTracker tracker = new ExpenseTracker();
 
         // this map will be used to track expenses. Request will involve these users only.
-        Map<User, Map<User, Double>> expenseTrackerMap = new HashMap<User, Map<User, Double>>();
+        Map<User, Map<User, Double>> expenseTrackerMap = new HashMap<>();
         User first = new User("u1");
         User second = new User("u2");
         User third = new User("u3");
@@ -25,7 +25,7 @@ public class Test {
         expenseTrackerMap.put(second, new HashMap<>());
         expenseTrackerMap.put(third, new HashMap<>());
         expenseTrackerMap.put(fourth, new HashMap<>());
-        tracker.setOwnMap(expenseTrackerMap);
+        tracker.setTrackerMap(expenseTrackerMap);
 
         // In general this value will be fetched from DB
         Map<String, User> userMap = new HashMap<>();
@@ -74,7 +74,7 @@ public class Test {
                     break;
                 case "EXPENSE":
                     isInserted = true;
-                    DistributionService distributionService = null;
+                    DistributionService distributionService;
                     int numUser = Integer.parseInt(words[3]);
                     String payer = words[1];
                     List<String> borrowers = new ArrayList<>(Arrays.asList(words).subList(4, 4 + numUser));
