@@ -84,7 +84,7 @@ public class Test {
                     for (int i = 4; i < 4 + numUser; i++) {
                         borrowers.add(words[i]);
                     }
-                    DistributionService distributionService=null;
+                    DistributionService distributionService = null;
                     if (words[numUser + 4].equals("EXACT")) {
                         List<Double> moneyDistribution = new ArrayList<>();
                         for (int i = numUser + 5; i < words.length; i++) {

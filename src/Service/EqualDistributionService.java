@@ -15,23 +15,22 @@ public class EqualDistributionService extends DistributionService {
 
     @Override
     public void distribute() {
-        double debtAmountForOthers = ((double)getAmountPaid()) / ((double)getUserNumber());
-        debtAmountForOthers=Math.round(debtAmountForOthers*100.0)/100.0;
+        double debtAmountForOthers = ((double) getAmountPaid()) / ((double) getUserNumber());
+        debtAmountForOthers = Math.round(debtAmountForOthers * 100.0) / 100.0;
         System.out.println(debtAmountForOthers);
         Map<String, User> userMap = getUserMap();
         Map<User, Map<User, Double>> expenseMap = getTracker().getOwnMap();
         User payer = userMap.get(getPayer());
-        boolean first=true;
-        double debtAmountForFirst=getAmountPaid()-(getUserNumber()-1)*debtAmountForOthers;
-        debtAmountForFirst=Math.round(debtAmountForFirst*100.0)/100.0;
+        boolean first = true;
+        double debtAmountForFirst = getAmountPaid() - (getUserNumber() - 1) * debtAmountForOthers;
+        debtAmountForFirst = Math.round(debtAmountForFirst * 100.0) / 100.0;
         for (String id : getBorrowers()) {
-            double debtAmount=0.0;
-            if(first)
-                debtAmount=debtAmountForFirst;
+            double debtAmount = 0.0;
+            if (first) debtAmount = debtAmountForFirst;
             else {
-                debtAmount=debtAmountForOthers;
+                debtAmount = debtAmountForOthers;
             }
-            first=false;
+            first = false;
             User borrower = userMap.get(id);
             if (borrower == payer) {
                 continue;
