@@ -61,13 +61,13 @@ public class Test {
                             MoneyBorrower moneyBorrower=new MoneyBorrower(userService.getUser(borrowers.get(i-5-numUser)),Double.parseDouble(words[i]));
                             moneyBorrowers.add(moneyBorrower);
                         }
-                        transactionService=new ExactTransactionService();
+                        transactionService=ExactTransactionService.getExactTransactionServiceObject();
                     } else {
                         for (int i = 4; i < 4+numUser; i++) {
                             MoneyBorrower moneyBorrower=new MoneyBorrower(userService.getUser(words[i]),100.0);
                             moneyBorrowers.add(moneyBorrower);
                         }
-                        transactionService=new EqualTransactionService();
+                        transactionService=EqualTransactionService.getEqualTransactionServiceObject();
                     }
                     transaction=new Transaction(payer,moneyBorrowers,Double.parseDouble(words[2]),words[numUser+4]);
                     transactionService.addTransaction(transaction);

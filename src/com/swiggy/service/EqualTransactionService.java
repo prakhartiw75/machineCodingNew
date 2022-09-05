@@ -1,13 +1,17 @@
 package com.swiggy.service;
 
 import com.swiggy.model.MoneyBorrower;
-import com.swiggy.model.User;
 import com.swiggy.utils.Utils;
 
 import java.util.List;
+import java.util.Objects;
 
 public class EqualTransactionService extends TransactionService{
-    @Override
+
+    private static EqualTransactionService equalTransactionService;
+    private EqualTransactionService(){
+        super();
+    }
     public void distribute(double amountPaid, List<MoneyBorrower> borrowers) {
         List<Double>equalDivision= Utils.equalDivision(amountPaid,borrowers);
         boolean isFirstBorrower=true;
@@ -24,5 +28,12 @@ public class EqualTransactionService extends TransactionService{
     @Override
     public void validate() {
 
+    }
+
+    public static EqualTransactionService getEqualTransactionServiceObject(){
+        if(Objects.isNull(equalTransactionService)){
+            equalTransactionService=new EqualTransactionService();
+        }
+        return equalTransactionService;
     }
 }
