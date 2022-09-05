@@ -59,14 +59,12 @@ public class Test {
                     if (words[numUser + 4].equals("EXACT")) {
                         for (int i = numUser + 5; i < words.length; i++) {
                             MoneyBorrower moneyBorrower=new MoneyBorrower(userService.getUser(borrowers.get(i-5-numUser)),Double.parseDouble(words[i]));
-                            System.out.println(moneyBorrower);
                             moneyBorrowers.add(moneyBorrower);
                         }
                         transactionService=new ExactTransactionService();
                     } else {
                         for (int i = 4; i < 4+numUser; i++) {
                             MoneyBorrower moneyBorrower=new MoneyBorrower(userService.getUser(words[i]),100.0);
-                            System.out.println(moneyBorrower);
                             moneyBorrowers.add(moneyBorrower);
                         }
                         transactionService=new EqualTransactionService();
